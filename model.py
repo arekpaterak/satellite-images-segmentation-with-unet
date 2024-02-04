@@ -1,5 +1,3 @@
-from typing import override
-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -21,7 +19,6 @@ class DoubleConv(nn.Module):
 
         self.device = "cpu"
 
-    @override
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         return self.conv(x)
 
@@ -59,7 +56,6 @@ class UNet(nn.Module):
 
         self.final_conv = nn.Conv2d(features[0], n_classes, kernel_size=1)
 
-    @override
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         skip_connections = []
 
@@ -86,7 +82,6 @@ class UNet(nn.Module):
 
         return self.final_conv(x)
 
-    @override
     def to(self, device: str) -> nn.Module:
         self.device = device
         return super().to(device)

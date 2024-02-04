@@ -27,7 +27,7 @@ model = UNet(
     features=[64, 128, 256],
 )
 
-model.load_state_dict(torch.load("model.pth"))
+model.load_state_dict(torch.load("model2.pth"))
 
 model.to(DEVICE)
 model.eval()
@@ -80,7 +80,8 @@ interface = gradio.Interface(
     fn=plot_image,
     inputs=inputs,
     outputs=outputs,
-    allow_flagging=False,
+    allow_flagging="never",
+    title="Segmentation of Satellite Images",
 )
 
 if __name__ == "__main__":
