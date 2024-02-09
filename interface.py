@@ -27,7 +27,7 @@ model = UNet(
     features=[64, 128, 256],
 )
 
-model.load_state_dict(torch.load("model2.pth"))
+model.load_state_dict(torch.load("trained_models/model2.pth"))
 
 model.to(DEVICE)
 model.eval()
